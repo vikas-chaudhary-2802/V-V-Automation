@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* V&V Automation Premium Industrial Design System */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Primary: Deep Navy Blue - Authority and precision */
+    --primary: 222 55% 18%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Accent: Industrial Orange - Energy and innovation */
+    --accent: 18 82% 51%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Background tones */
+    --background: 0 0% 100%;
+    --foreground: 222 55% 12%;
+
+    /* Card surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 222 55% 12%;
+
+    /* Subtle surfaces */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 45%;
+
+    /* Secondary surfaces */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 55% 18%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 55% 12%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders */
+    --border: 220 13% 90%;
+    --input: 220 13% 90%;
+    --ring: 222 55% 18%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 222 55% 18%;
+    --sidebar-primary: 222 55% 18%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-accent-foreground: 222 55% 18%;
+    --sidebar-border: 220 13% 90%;
+    --sidebar-ring: 222 55% 18%;
+
+    /* Custom tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(222 55% 12%) 0%, hsl(222 55% 22%) 100%);
+    --accent-gradient: linear-gradient(135deg, hsl(18 82% 51%) 0%, hsl(18 82% 41%) 100%);
+    --surface-elevated: 0 0% 99%;
+  }
+
+  .dark {
+    --background: 222 55% 8%;
+    --foreground: 210 40% 98%;
+    --card: 222 55% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 55% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 222 55% 18%;
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 18 82% 51%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 212 26% 83%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .container-section {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .hero-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-muted-foreground max-w-2xl;
+  }
+
+  .card-industrial {
+    @apply bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-accent/30;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-md transition-all duration-200 hover:opacity-90;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-accent text-accent-foreground font-medium rounded-md transition-all duration-200 hover:opacity-90;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-primary text-primary font-medium rounded-md transition-all duration-200 hover:bg-primary hover:text-primary-foreground;
+  }
+
+  .nav-link {
+    @apply text-foreground/80 hover:text-accent transition-colors duration-200 font-medium;
+  }
+
+  .nav-link-active {
+    @apply text-accent font-medium;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--accent-gradient);
+  }
+
+  .hero-bg {
+    background: var(--hero-gradient);
+  }
+ 
+   /* Custom cursor styles */
+   .custom-cursor {
+     cursor: none;
+   }
+ 
+   /* Radial gradient for cursor glow */
+   .bg-gradient-radial {
+     background: radial-gradient(circle, var(--tw-gradient-stops));
+   }
+ 
+   /* Glassmorphism */
+   .glass {
+     @apply backdrop-blur-md bg-background/80 border border-border/50;
+   }
+ 
+   /* Premium glow effect */
+   .glow-accent {
+     box-shadow: 0 0 40px -10px hsl(var(--accent) / 0.5);
+   }
+ 
+   /* Text gradient */
+   .text-gradient-accent {
+     @apply bg-gradient-to-r from-accent via-orange-400 to-accent bg-clip-text text-transparent;
+   }
+
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
