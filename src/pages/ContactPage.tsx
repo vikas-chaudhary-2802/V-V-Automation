@@ -79,8 +79,8 @@ const ContactPage = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+91 93109 35423"],
-      action: "tel:+919310935423",
+      details: ["+91 93135 21824"],
+      action: "tel:+91 9313521824",
     },
     {
       icon: Mail,

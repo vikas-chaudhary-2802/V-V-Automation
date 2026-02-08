@@ -67,8 +67,8 @@
                  </Link>
                </MagneticButton>
                <MagneticButton>
-                 <a href="tel:+919310935423" className="btn-outline">
-                   Call: +91 93109 35423
+                 <a href="tel:+919313521824" className="btn-outline">
+                   Call: +91 93135 21824
                  </a>
                </MagneticButton>
              </motion.div>

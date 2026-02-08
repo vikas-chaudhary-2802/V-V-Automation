@@ -123,7 +123,7 @@ const Header = () => {
           {/* CTA and Mobile Menu */}
           <div className="flex items-center gap-4">
             <motion.a
-              href="tel:+919310935423"
+              href="tel:+919313521824"
               className={`hidden md:flex items-center gap-2 text-sm font-medium transition-colors ${
                 isScrolled 
                   ? "text-foreground hover:text-accent" 
@@ -137,7 +137,7 @@ const Header = () => {
               >
                 <Phone className="w-4 h-4 text-accent" />
               </motion.div>
-              <span>+91 93109 35423</span>
+              <span>+91 93135 21824</span>
             </motion.a>
             
             <motion.div
@@ -206,7 +206,7 @@ const Header = () => {
               </motion.div>
             ))}
             <motion.a
-              href="tel:+919310935423"
+              href="tel:+919313521824"
               className="flex items-center gap-3 py-3 px-4 text-foreground"
               initial={{ opacity: 0, x: -20 }}
               animate={{ 
@@ -216,7 +216,7 @@ const Header = () => {
               transition={{ delay: isMenuOpen ? 0.5 : 0 }}
             >
               <Phone className="w-5 h-5 text-accent" />
-              <span className="font-medium">+91 93109 35423</span>
+              <span className="font-medium">+91 93135 21824</span>
             </motion.a>
           </div>
         </div>
