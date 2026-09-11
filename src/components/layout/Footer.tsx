@@ -1,138 +1,32 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { contact, products } from "@/data/catalog";
 
-const Footer = () => {
-  return (
-    <footer className="bg-primary text-primary-foreground relative overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0">
-        <motion.div 
-          className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-accent/5 blur-3xl"
-          animate={{ 
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-            opacity: [0.1, 0.2, 0.1]
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-primary-foreground/5 blur-3xl"
-          animate={{ 
-            x: [0, -30, 0],
-            y: [0, 20, 0],
-            opacity: [0.05, 0.1, 0.05]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
+const Footer = () => (
+  <footer className="site-footer">
+    <div className="container-section">
+      <div className="footer-lead">
+        <div>
+          <p className="eyebrow eyebrow-light"><span />BUILT IN INDIA. BUILT TO PERFORM.</p>
+          <h2>Precision, from the first drawing to the first cut.</h2>
+        </div>
+        <Link to="/contact" className="footer-circle" aria-label="Request a quote"><ArrowUpRight /></Link>
       </div>
 
-      <div className="container-section section-padding relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-3 mb-4 group">
-              <img 
-                src={logo} 
-                alt="V and V Automation" 
-                className="h-14 w-auto brightness-0 invert transition-transform duration-300 group-hover:scale-105" 
-              />
-            </Link>
-            <p className="text-primary-foreground/80 text-sm leading-relaxed mb-4">
-              Leading CNC machine manufacturer in India. We design, build, and supply precision CNC machines across the nation.
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Quick Links</h4>
-            <ul className="space-y-3">
-              {[
-                { name: "Home", path: "/" },
-                { name: "Our Products", path: "/products" },
-                { name: "CNC Parts", path: "/parts" },
-                { name: "About Us", path: "/about" },
-                { name: "Contact Us", path: "/contact" },
-              ].map((link, index) => (
-                <li key={index}>
-                  <Link 
-                    to={link.path} 
-                    className="text-primary-foreground/80 hover:text-accent transition-colors text-sm inline-block relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-accent after:transition-all hover:after:w-full"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Products */}
-          <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Our Products</h4>
-            <ul className="space-y-3">
-              {[
-                "CNC Machines",
-                "CNC Engraving Machines",
-                "CNC Milling Machines",
-                "VMC Machines",
-              ].map((product, index) => (
-                <li key={index}>
-                  <Link 
-                    to="/products" 
-                    className="text-primary-foreground/80 hover:text-accent transition-colors text-sm inline-block relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-accent after:transition-all hover:after:w-full"
-                  >
-                    {product}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Contact Us</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3 group">
-                <Phone className="w-4 h-4 text-accent mt-0.5 shrink-0 transition-transform duration-300 group-hover:scale-110" />
-                <div className="text-sm">
-                  <a href="tel:+919313521824" className="text-primary-foreground/80 hover:text-accent transition-colors">
-                    +91 9313521824
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-start gap-3 group">
-                <Mail className="w-4 h-4 text-accent mt-0.5 shrink-0 transition-transform duration-300 group-hover:scale-110" />
-                <a href="mailto:vikasch2802@gmail.com" className="text-primary-foreground/80 hover:text-accent transition-colors text-sm">
-                  vikasch2802@gmail.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3 group">
-                <MapPin className="w-4 h-4 text-accent mt-0.5 shrink-0 transition-transform duration-300 group-hover:scale-110" />
-                <span className="text-primary-foreground/80 text-sm">
-                  Plot no -331, near Naurula Bakery,<br />
-                  Puth Khurd, Industrial Area,<br />
-                  Delhi, 110039
-                </span>
-              </li>
-            </ul>
-          </div>
+      <div className="footer-grid">
+        <div className="footer-brand">
+          <Link to="/" className="brand"><span className="brand-mark"><img src={logo} alt="" /></span><span className="brand-copy"><strong>V&amp;V Automation</strong><small>Precision in motion</small></span></Link>
+          <p>Indian CNC machine manufacturing, critical components and direct technical support.</p>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-primary-foreground/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-primary-foreground/60 text-sm">
-              © {new Date().getFullYear()} V & V Automation. All rights reserved.
-            </p>
-            <p className="text-primary-foreground/60 text-sm">
-              Made in India 🇮🇳 | Serving Pan-India
-            </p>
-          </div>
-        </div>
+        <div><h3>Navigate</h3><Link to="/">Home</Link><Link to="/products">Machines</Link><Link to="/parts">CNC Parts</Link><Link to="/about">About</Link><Link to="/contact">Contact</Link></div>
+        <div><h3>Machine range</h3>{products.map((product) => <Link key={product.id} to={`/products#${product.id}`}>{product.name}</Link>)}</div>
+        <div className="footer-contact"><h3>Contact</h3><a href={contact.phoneHref}><Phone />{contact.phoneDisplay}</a><a href={`mailto:${contact.email}`}><Mail />{contact.email}</a><p><MapPin />{contact.addressLines.join(", ")}</p></div>
       </div>
-    </footer>
-  );
-};
+
+      <div className="footer-bottom"><span>© {new Date().getFullYear()} V&amp;V Automation</span><span>Delhi · Made in India · Serving nationwide</span></div>
+    </div>
+  </footer>
+);
 
 export default Footer;
