@@ -13,12 +13,12 @@ const QuoteBand = ({
 }: QuoteBandProps) => (
   <section className="quote-band">
     <div className="container-section quote-band-inner">
-      <div>
+      <div data-reveal="up">
         <p className="eyebrow eyebrow-light"><span />START A CONVERSATION</p>
         <h2>{title}</h2>
         <p>{copy}</p>
       </div>
-      <div className="quote-actions">
+      <div className="quote-actions" data-reveal="up">
         <Link to="/contact" className="button button-accent">Request a quote <ArrowUpRight size={18} /></Link>
         <a href={contact.phoneHref} className="quote-phone"><Phone size={18} /> {contact.phoneDisplay}</a>
       </div>

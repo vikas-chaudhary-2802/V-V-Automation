@@ -1,18 +1,22 @@
 import { Link } from "react-router-dom";
-import { ArrowDownRight, ArrowRight, ArrowUpRight, BadgeCheck, Factory, MapPin } from "lucide-react";
+import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, BadgeCheck, Factory, MapPin } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import QuoteBand from "@/components/QuoteBand";
 import SectionHeading from "@/components/SectionHeading";
 import { advantages, parts, products, serviceSteps, stats } from "@/data/catalog";
-import heroMachine from "@/assets/vv-vmc-machine.png";
+import heroMachine from "@/assets/vv-vmc-machine-optimized.jpg";
 import cncShop from "@/assets/cnc-shop.jpg";
 
 const HomePage = () => (
   <Layout>
     <section className="home-hero">
-      <div className="hero-image" aria-hidden="true"><img src={heroMachine} alt="" /></div>
+      <div className="hero-image" aria-hidden="true"><img src={heroMachine} alt="" fetchPriority="high" /></div>
       <div className="hero-shade" />
       <div className="hero-grid" />
+      <div className="hero-mobile-badge" aria-hidden="true">
+        <span>VMC Series</span>
+        <strong>Built in India</strong>
+      </div>
 
       <div className="container-section hero-content">
         <div className="hero-kicker"><span /> CNC MACHINE MANUFACTURER · DELHI</div>
@@ -30,13 +34,14 @@ const HomePage = () => (
           <div><BadgeCheck /><span><strong>Quality tested</strong>Before dispatch</span></div>
           <div><MapPin /><span><strong>Pan-India</strong>Supply &amp; support</span></div>
         </div>
+        <div className="hero-scroll-cue" aria-hidden="true"><ArrowDown />Scroll to explore</div>
       </div>
 
       <div className="hero-index" aria-hidden="true"><span>V&amp;V / 01</span><span>ENGINEERED IN INDIA</span></div>
     </section>
 
     <section className="intro-strip">
-      <div className="container-section intro-grid">
+      <div className="container-section intro-grid" data-reveal="up">
         <p>More than a machine.</p>
         <h2>A dependable manufacturing partner for your production line.</h2>
         <Link to="/about">Discover our approach <ArrowRight size={18} /></Link>
@@ -53,14 +58,15 @@ const HomePage = () => (
           />
           <Link className="text-link" to="/products">View complete range <ArrowUpRight size={18} /></Link>
         </div>
+        <div className="mobile-scroll-hint"><span>Swipe</span><i /><span>04 machines</span></div>
 
         <div className="machine-grid">
           {products.map((product) => (
-            <Link to={`/products#${product.id}`} className="machine-card" key={product.id}>
+            <Link to={`/products#${product.id}`} className="machine-card" key={product.id} data-reveal="up">
               <div className="machine-card-media">
                 <span className="machine-card-index">{product.number}</span>
                 <span className="machine-card-tag">{product.tag}</span>
-                <img src={product.image} alt={product.name} />
+                <img src={product.image} alt={product.name} loading="lazy" decoding="async" />
               </div>
               <div className="machine-card-copy">
                 <span>{product.englishName}</span>
@@ -75,14 +81,14 @@ const HomePage = () => (
     </section>
 
     <section className="stats-band" aria-label="Company highlights">
-      <div className="container-section stats-grid">
+      <div className="container-section stats-grid" data-reveal="up">
         {stats.map((stat) => <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}
       </div>
     </section>
 
     <section className="factory-story">
-      <div className="factory-image"><img src={cncShop} alt="CNC machines on a modern production floor" /></div>
-      <div className="factory-copy">
+      <div className="factory-image" data-reveal="image"><img src={cncShop} alt="CNC machines on a modern production floor" loading="lazy" decoding="async" /></div>
+      <div className="factory-copy" data-reveal="up">
         <p className="eyebrow eyebrow-light"><span />WHY V&amp;V</p>
         <h2>We manufacture.<br />We do not just resell.</h2>
         <p>
@@ -111,7 +117,7 @@ const HomePage = () => (
           {serviceSteps.map((step) => {
             const Icon = step.icon;
             return (
-              <article className="process-card" key={step.number}>
+              <article className="process-card" key={step.number} data-reveal="up">
                 <div><Icon /><span>{step.number}</span></div>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
@@ -132,10 +138,11 @@ const HomePage = () => (
           />
           <Link className="text-link" to="/parts">Explore all parts <ArrowUpRight size={18} /></Link>
         </div>
+        <div className="mobile-scroll-hint"><span>Swipe</span><i /><span>Featured components</span></div>
         <div className="parts-preview-grid">
           {parts.slice(0, 3).map((part) => (
-            <Link to={`/parts#${part.id}`} className="part-preview-card" key={part.id}>
-              <img src={part.image} alt={part.name} />
+            <Link to={`/parts#${part.id}`} className="part-preview-card" key={part.id} data-reveal="up">
+              <img src={part.image} alt={part.name} loading="lazy" decoding="async" />
               <div><span>Component</span><h3>{part.name}</h3><ArrowUpRight /></div>
             </Link>
           ))}

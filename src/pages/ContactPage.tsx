@@ -54,7 +54,7 @@ const ContactPage = () => {
 
       <section className="contact-section section-space">
         <div className="container-section contact-layout">
-          <aside className="contact-aside">
+          <aside className="contact-aside" data-reveal="up">
             <p className="eyebrow"><span />DIRECT CONTACT</p>
             <h2>Real answers from a technical team.</h2>
             <p>We work with manufacturers across India. Share the application, material, expected output and any technical constraints you already know.</p>
@@ -67,7 +67,7 @@ const ContactPage = () => {
             <div className="india-note"><span>IND</span><p><strong>Pan-India delivery</strong>Installation and technical support available across India.</p></div>
           </aside>
 
-          <div className="enquiry-panel">
+          <div className="enquiry-panel" data-reveal="up">
             {sent ? (
               <div className="form-success">
                 <CheckCircle2 />
@@ -106,7 +106,7 @@ const ContactPage = () => {
       </section>
 
       <section className="location-section">
-        <div className="container-section location-grid">
+        <div className="container-section location-grid" data-reveal="up">
           <div><p className="eyebrow eyebrow-light"><span />VISIT V&V AUTOMATION</p><h2>See where the machines come together.</h2></div>
           <div><MapPin />{contact.addressLines.map((line) => <p key={line}>{line}</p>)}</div>
           <a href="https://maps.google.com/?q=Plot+331+Puth+Khurd+Industrial+Area+Delhi+110039" target="_blank" rel="noreferrer">Open in Google Maps <ArrowUpRight /></a>

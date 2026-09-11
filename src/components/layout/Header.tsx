@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { ArrowUpRight, Menu, Phone, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Mail, Menu, Phone, X } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { contact } from "@/data/catalog";
 
 const navigation = [
   { label: "Home", path: "/" },
@@ -16,6 +17,18 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => setOpen(false), [location.pathname]);
+
+  useEffect(() => {
+    document.body.classList.toggle("menu-open", open);
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.classList.remove("menu-open");
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [open]);
 
   return (
     <header className="site-header">
@@ -64,16 +77,24 @@ const Header = () => {
       {open && (
         <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation">
           <div className="container-section">
-            {navigation.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) => (isActive ? "active" : undefined)}
-              >
-                {item.label}
-              </NavLink>
-            ))}
-            <a href="tel:+919313521824"><Phone size={17} /> +91 93135 21824</a>
+            <p className="mobile-nav-label">Navigate</p>
+            <div className="mobile-nav-links">
+              {navigation.map((item, index) => (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  className={({ isActive }) => (isActive ? "active" : undefined)}
+                >
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{item.label}</strong>
+                  <ArrowRight />
+                </NavLink>
+              ))}
+            </div>
+            <div className="mobile-nav-contact">
+              <a href={contact.phoneHref}><Phone />{contact.phoneDisplay}</a>
+              <a href={`mailto:${contact.email}`}><Mail />{contact.email}</a>
+            </div>
           </div>
         </nav>
       )}

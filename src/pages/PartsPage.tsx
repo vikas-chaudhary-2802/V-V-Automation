@@ -30,10 +30,10 @@ const PartsPage = () => (
 
         <div className="parts-grid">
           {parts.map((part, index) => (
-            <article className="part-card" id={part.id} key={part.id}>
+            <article className="part-card" id={part.id} key={part.id} data-reveal="up">
               <div className="part-card-image">
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <img src={part.image} alt={part.name} />
+                <img src={part.image} alt={part.name} loading="lazy" decoding="async" />
               </div>
               <div className="part-card-body">
                 <p>Industrial component</p>
@@ -49,10 +49,10 @@ const PartsPage = () => (
     </section>
 
     <section className="parts-help section-space-sm">
-      <div className="container-section parts-help-grid">
-        <div><Search /><h3>Identify the part</h3><p>Share a clear photo, nameplate, model number and your machine details.</p></div>
-        <div><PackageCheck /><h3>Confirm compatibility</h3><p>Our team checks the available details before recommending the next step.</p></div>
-        <div><PhoneCall /><h3>Get direct assistance</h3><p>Speak with someone who understands CNC assemblies and service requirements.</p></div>
+        <div className="container-section parts-help-grid">
+          <div data-reveal="up"><Search /><h3>Identify the part</h3><p>Share a clear photo, nameplate, model number and your machine details.</p></div>
+          <div data-reveal="up"><PackageCheck /><h3>Confirm compatibility</h3><p>Our team checks the available details before recommending the next step.</p></div>
+          <div data-reveal="up"><PhoneCall /><h3>Get direct assistance</h3><p>Speak with someone who understands CNC assemblies and service requirements.</p></div>
       </div>
     </section>
 

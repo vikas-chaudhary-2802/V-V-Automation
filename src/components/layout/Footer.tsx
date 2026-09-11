@@ -6,7 +6,7 @@ import { contact, products } from "@/data/catalog";
 const Footer = () => (
   <footer className="site-footer">
     <div className="container-section">
-      <div className="footer-lead">
+      <div className="footer-lead" data-reveal="up">
         <div>
           <p className="eyebrow eyebrow-light"><span />BUILT IN INDIA. BUILT TO PERFORM.</p>
           <h2>Precision, from the first drawing to the first cut.</h2>

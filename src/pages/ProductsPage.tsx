@@ -18,7 +18,7 @@ const ProductsPage = () => (
     />
 
     <section className="catalog-intro section-space-sm">
-      <div className="container-section catalog-intro-grid">
+      <div className="container-section catalog-intro-grid" data-reveal="up">
         <p className="eyebrow"><span />SELECT YOUR PLATFORM</p>
         <h2>Start with the work.<br />Then choose the machine.</h2>
         <p>Our team helps match your material, component size, finish, cycle time and production volume to the right platform.</p>
@@ -28,10 +28,10 @@ const ProductsPage = () => (
     <section className="product-list">
       <div className="container-section">
         {products.map((product) => (
-          <article id={product.id} className="product-row" key={product.id}>
+          <article id={product.id} className="product-row" key={product.id} data-reveal="up">
             <div className="product-row-media">
               <span>{product.number}</span>
-              <img src={product.image} alt={product.name} />
+              <img src={product.image} alt={product.name} loading="lazy" decoding="async" />
               <p>{product.tag}</p>
             </div>
             <div className="product-row-copy">
@@ -60,7 +60,7 @@ const ProductsPage = () => (
         <SectionHeading eyebrow="A BETTER STARTING POINT" title="Not sure which platform fits?" copy="Bring us these four inputs. We will help translate them into a practical machine configuration." />
         <div className="selection-grid">
           {[['01','Material','What you cut'],['02','Work envelope','Maximum job size'],['03','Accuracy','Tolerance & finish'],['04','Throughput','Volume & cycle time']].map(([number,title,copy]) => (
-            <div key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></div>
+            <div key={number} data-reveal="up"><span>{number}</span><h3>{title}</h3><p>{copy}</p></div>
           ))}
         </div>
         <Link to="/contact" className="text-link">Share your application <ArrowRight size={18} /></Link>

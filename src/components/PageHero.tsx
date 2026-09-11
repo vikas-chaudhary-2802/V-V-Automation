@@ -10,11 +10,11 @@ interface PageHeroProps {
 
 const PageHero = ({ eyebrow, title, copy, index, image }: PageHeroProps) => (
   <section className="page-hero">
-    {image && <img className="page-hero-image" src={image} alt="" aria-hidden="true" />}
+    {image && <img className="page-hero-image" src={image} alt="" aria-hidden="true" fetchPriority="high" />}
     <div className="page-hero-overlay" />
     <div className="page-hero-lines" />
     <div className="container-section page-hero-inner">
-      <div>
+      <div data-reveal="up">
         <p className="eyebrow eyebrow-light"><span />{eyebrow}</p>
         <h1>{title}</h1>
         <p className="page-hero-copy">{copy}</p>

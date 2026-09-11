@@ -6,7 +6,7 @@ import QuoteBand from "@/components/QuoteBand";
 import SectionHeading from "@/components/SectionHeading";
 import { advantages, milestones, stats } from "@/data/catalog";
 import cncShop from "@/assets/cnc-shop.jpg";
-import machineImage from "@/assets/vv-vmc-machine.png";
+import machineImage from "@/assets/vv-vmc-machine-optimized.jpg";
 
 const AboutPage = () => (
   <Layout>
@@ -19,7 +19,7 @@ const AboutPage = () => (
     />
 
     <section className="story-section section-space">
-      <div className="container-section story-grid">
+      <div className="container-section story-grid" data-reveal="up">
         <div className="story-title">
           <p className="eyebrow"><span />OUR STORY</p>
           <h2>Machines made for the realities of Indian manufacturing.</h2>
@@ -32,13 +32,13 @@ const AboutPage = () => (
       </div>
     </section>
 
-    <section className="about-image-break">
-      <img src={cncShop} alt="Modern CNC manufacturing facility" />
+    <section className="about-image-break" data-reveal="image">
+      <img src={cncShop} alt="Modern CNC manufacturing facility" loading="lazy" decoding="async" />
       <div className="about-image-note"><span>Delhi, India</span><strong>Engineering with ownership.</strong></div>
     </section>
 
     <section className="about-stats">
-      <div className="container-section stats-grid">
+      <div className="container-section stats-grid" data-reveal="up">
         {stats.map((stat) => <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}
       </div>
     </section>
@@ -49,7 +49,7 @@ const AboutPage = () => (
         <div className="values-grid">
           {advantages.map((item, index) => {
             const Icon = item.icon;
-            return <article key={item.title}><span>{String(index + 1).padStart(2, "0")}</span><Icon /><h3>{item.title}</h3><p>{item.text}</p></article>;
+            return <article key={item.title} data-reveal="up"><span>{String(index + 1).padStart(2, "0")}</span><Icon /><h3>{item.title}</h3><p>{item.text}</p></article>;
           })}
         </div>
       </div>
@@ -62,15 +62,15 @@ const AboutPage = () => (
           <h2>Progress measured in capability.</h2>
           <p>From engraving platforms to a broader CNC and VMC portfolio, each chapter has been driven by the work our customers needed to do next.</p>
         </div>
-        <ol className="timeline-list">
+        <ol className="timeline-list" data-reveal="up">
           {milestones.map((milestone) => <li key={milestone.year}><strong>{milestone.year}</strong><p>{milestone.text}</p></li>)}
         </ol>
       </div>
     </section>
 
     <section className="manufacturer-section section-space">
-      <div className="container-section manufacturer-grid">
-        <div className="manufacturer-machine"><img src={machineImage} alt="V&V vertical machining centre" /></div>
+      <div className="container-section manufacturer-grid" data-reveal="up">
+        <div className="manufacturer-machine"><img src={machineImage} alt="V&V vertical machining centre" loading="lazy" decoding="async" /></div>
         <div>
           <p className="eyebrow"><span />THE V&V DIFFERENCE</p>
           <h2>Direct from the people who build it.</h2>

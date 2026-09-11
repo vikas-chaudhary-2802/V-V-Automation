@@ -3,7 +3,7 @@ import { BadgeCheck, Boxes, Factory, Gauge, Headphones, Settings2, ShieldCheck, 
 import machine542 from "@/assets/vv-m-542.png";
 import machine543 from "@/assets/vv-m-543.png";
 import machine433 from "@/assets/vv-m-433.png";
-import vmcMachine from "@/assets/vv-vmc-machine.png";
+import vmcMachine from "@/assets/vv-vmc-machine-optimized.jpg";
 import servoMotor from "@/assets/servo-motor.jpg";
 import controlPanel from "@/assets/control-panel.jpg";
 import mpgHandwheel from "@/assets/mpg-handwheel.jpg";
