@@ -1,4 +1,4 @@
-import { type FormEvent, useMemo, useState } from "react";
+import { type FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import {
   ArrowLeft,
@@ -7,10 +7,13 @@ import {
   Check,
   CheckCircle2,
   Clock3,
+  Download,
   Factory,
+  FileText,
   LockKeyhole,
   MessageCircle,
   Phone,
+  Sparkles,
 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -20,6 +23,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { contact, parts, products } from "@/data/catalog";
 import partsImage from "@/assets/control-panel.jpg";
 import supportImage from "@/assets/cnc-shop.jpg";
+import quotationMachine from "@/assets/cnc-hero-branded-v3.jpg";
 
 type QuoteStep = 1 | 2 | 3;
 
@@ -88,6 +92,7 @@ const stepLabels = [
 ];
 
 const serviceOptions = ["Installation", "Operator training", "Application setup", "After-sales plan"];
+const quotationPdf = "/VV-Automation-Standard-Quotation.pdf";
 
 const QuotePage = () => {
   const [searchParams] = useSearchParams();
@@ -97,8 +102,22 @@ const QuotePage = () => {
   const [step, setStep] = useState<QuoteStep>(1);
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const [whatsappUrl, setWhatsappUrl] = useState("");
+  const downloadStarted = useRef(false);
   const [reference] = useState(() => `VV-${new Date().toISOString().slice(2, 10).replace(/-/g, "")}-${Math.floor(1000 + Math.random() * 9000)}`);
+
+  useEffect(() => {
+    if (downloadStarted.current) return;
+    downloadStarted.current = true;
+    const link = document.createElement("a");
+    link.href = quotationPdf;
+    link.download = "VV-Automation-Standard-Quotation.pdf";
+    link.setAttribute("aria-hidden", "true");
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }, []);
 
   const selectedProduct = useMemo(
     () => products.find((product) => product.name === form.solution),
@@ -186,6 +205,7 @@ const QuotePage = () => {
     setStep(1);
     setError("");
     setSubmitted(false);
+    setShowForm(true);
     setWhatsappUrl("");
   };
 
@@ -195,29 +215,45 @@ const QuotePage = () => {
         <div className="quote-page-grid" aria-hidden="true" />
         <div className="container-section quote-shell">
           <aside className="quote-intro">
-            <p className="eyebrow eyebrow-light"><span />REQUEST A QUOTATION</p>
-            <h1>Built around<br /><em>your production.</em></h1>
-            <p className="quote-intro-copy">
-              Give our engineering team the right starting information. We will use it to recommend a practical machine, configuration and next step.
-            </p>
+            {!showForm && !submitted ? (
+              <>
+                <p className="eyebrow eyebrow-light"><span />STANDARD QUOTATION</p>
+                <h1>Ready before<br /><em>the form.</em></h1>
+                <p className="quote-intro-copy">
+                  Your no-price technical and commercial proposal is available immediately. Download it first, then share details only if you want a tailored recommendation.
+                </p>
+                <div className="quote-pdf-trust">
+                  <div><FileText /><span><strong>3-page proposal</strong>Portfolio, scope and commercial framework</span></div>
+                  <div><LockKeyhole /><span><strong>No details required</strong>Download without submitting personal information</span></div>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="eyebrow eyebrow-light"><span />REQUEST A QUOTATION</p>
+                <h1>Built around<br /><em>your production.</em></h1>
+                <p className="quote-intro-copy">
+                  Give our engineering team the right starting information. We will use it to recommend a practical machine, configuration and next step.
+                </p>
 
-            <ol className="quote-step-list" aria-label="Quotation request progress">
-              {stepLabels.map((item, index) => {
-                const itemStep = (index + 1) as QuoteStep;
-                const complete = step > itemStep || submitted;
-                return (
-                  <li key={item.number} className={step === itemStep && !submitted ? "active" : complete ? "complete" : ""}>
-                    <span>{complete ? <Check /> : item.number}</span>
-                    <div><strong>{item.title}</strong><small>{item.copy}</small></div>
-                  </li>
-                );
-              })}
-            </ol>
+                <ol className="quote-step-list" aria-label="Quotation request progress">
+                  {stepLabels.map((item, index) => {
+                    const itemStep = (index + 1) as QuoteStep;
+                    const complete = step > itemStep || submitted;
+                    return (
+                      <li key={item.number} className={step === itemStep && !submitted ? "active" : complete ? "complete" : ""}>
+                        <span>{complete ? <Check /> : item.number}</span>
+                        <div><strong>{item.title}</strong><small>{item.copy}</small></div>
+                      </li>
+                    );
+                  })}
+                </ol>
 
-            <div className="quote-trust">
-              <div><Clock3 /><span><strong>Quick review</strong>Technical response during working hours</span></div>
-              <div><LockKeyhole /><span><strong>Private by design</strong>Your details are not stored on this website</span></div>
-            </div>
+                <div className="quote-trust">
+                  <div><Clock3 /><span><strong>Quick review</strong>Technical response during working hours</span></div>
+                  <div><LockKeyhole /><span><strong>Private by design</strong>Your details are not stored on this website</span></div>
+                </div>
+              </>
+            )}
           </aside>
 
           <div className="quote-workspace">
@@ -232,6 +268,44 @@ const QuotePage = () => {
                   <button type="button" onClick={resetQuote}>Create another request <ArrowRight /></button>
                 </div>
                 <div className="quote-success-contact"><Phone /><span>Prefer to speak now?<a href={contact.phoneHref}>{contact.phoneDisplay}</a></span></div>
+              </div>
+            ) : !showForm ? (
+              <div className="quote-pdf-gateway">
+                <header className="quote-pdf-gateway-header">
+                  <div><span>INSTANT ACCESS</span><strong>Standard quotation PDF</strong></div>
+                  <p><CheckCircle2 />Download started</p>
+                </header>
+                <div className="quote-pdf-gateway-body">
+                  <article className="quote-pdf-preview" aria-label="Preview of the V&V Automation standard quotation">
+                    <img src={quotationMachine} alt="Branded V&V Automation CNC machining centre" />
+                    <span className="quote-pdf-preview-shade" />
+                    <div className="quote-pdf-preview-brand">V&V <b>AUTOMATION</b></div>
+                    <div className="quote-pdf-preview-copy">
+                      <small>STANDARD TECHNICAL &amp;<br />COMMERCIAL PROPOSAL</small>
+                      <strong>Built for the job.<br /><em>Specified around you.</em></strong>
+                      <span>NO-PRICE / CONFIGURATION-LED</span>
+                    </div>
+                    <footer>VVA-STD-2026-01 <b>01 / 03</b></footer>
+                  </article>
+
+                  <div className="quote-pdf-gateway-copy">
+                    <p className="eyebrow"><span />NO PRICE. NO FORM REQUIRED.</p>
+                    <h2>Your standard quotation is ready.</h2>
+                    <p>Get the company overview, machine portfolio, standard engineering scope and commercial framework in one polished document. No contact details are needed.</p>
+                    <div className="quote-pdf-highlights">
+                      <span><FileText /><strong>3 A4 pages</strong>Complete, print-ready proposal</span>
+                      <span><Sparkles /><strong>Premium format</strong>Easy to review and share</span>
+                    </div>
+                    <div className="quote-pdf-actions">
+                      <a className="button button-accent" href={quotationPdf} download="VV-Automation-Standard-Quotation.pdf">Download PDF <Download /></a>
+                      <a href={quotationPdf} target="_blank" rel="noreferrer">Open in browser <ArrowRight /></a>
+                    </div>
+                    <button className="quote-pdf-continue" type="button" onClick={() => setShowForm(true)}>
+                      <span><strong>Need a tailored recommendation?</strong>Continue with optional production details</span><ArrowRight />
+                    </button>
+                    <small className="quote-pdf-note"><LockKeyhole />The standard PDF downloads automatically. The detailed request remains entirely optional.</small>
+                  </div>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate>

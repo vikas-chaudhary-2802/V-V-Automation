@@ -390,8 +390,51 @@
 .quote-trust svg { width: 17px; flex-shrink: 0; color: hsl(var(--accent)); }
 .quote-trust span { display: grid; }
 .quote-trust strong { color: rgba(255,255,255,.82); font-size: .67rem; }
+.quote-pdf-trust { display: grid; gap: 14px; margin-top: 38px; }
+.quote-pdf-trust > div { display: flex; gap: 13px; align-items: flex-start; padding: 16px 0; border-top: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.48); font-size: .63rem; line-height: 1.55; }
+.quote-pdf-trust svg { width: 18px; height: 18px; flex-shrink: 0; color: hsl(var(--accent)); }
+.quote-pdf-trust span { display: grid; gap: 2px; }
+.quote-pdf-trust strong { color: rgba(255,255,255,.86); font-size: .7rem; }
 .quote-workspace { min-height: 740px; color: hsl(var(--foreground)); background: #fbf9f3; border: 1px solid rgba(255,255,255,.2); box-shadow: 0 35px 100px rgba(0,0,0,.28); }
 .quote-workspace > form { min-height: 740px; display: flex; flex-direction: column; }
+.quote-pdf-gateway { min-height: 740px; display: flex; flex-direction: column; background: #fbf9f3; }
+.quote-pdf-gateway-header { display: grid; grid-template-columns: 1fr auto; gap: 25px; align-items: center; min-height: 94px; padding: 24px clamp(28px,4vw,54px); background: #f0ede5; border-bottom: 1px solid #d6d2c8; }
+.quote-pdf-gateway-header > div { display: grid; gap: 5px; }
+.quote-pdf-gateway-header > div span { color: hsl(var(--accent)); font-size: .56rem; font-weight: 850; letter-spacing: .14em; }
+.quote-pdf-gateway-header > div strong { font-size: .86rem; }
+.quote-pdf-gateway-header > p { display: inline-flex; align-items: center; gap: 7px; margin: 0; color: #27805e; font-size: .62rem; font-weight: 800; }
+.quote-pdf-gateway-header > p svg { width: 16px; height: 16px; }
+.quote-pdf-gateway-body { flex: 1; display: grid; grid-template-columns: minmax(230px,.84fr) minmax(300px,1.16fr); gap: clamp(34px,4vw,62px); align-items: center; padding: clamp(38px,4.5vw,64px); }
+.quote-pdf-preview { position: relative; width: 100%; max-width: 275px; aspect-ratio: 210 / 297; justify-self: center; overflow: hidden; color: white; background: #09131f; box-shadow: 0 28px 50px rgba(9,19,31,.22), 0 0 0 1px rgba(9,19,31,.08); }
+.quote-pdf-preview::before { content: ""; position: absolute; z-index: 3; inset: 0; opacity: .22; background-image: linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px); background-size: 42px 42px; mask-image: linear-gradient(#000,transparent 67%); }
+.quote-pdf-preview img { position: absolute; inset: auto 0 0; width: 100%; height: 55%; object-fit: cover; }
+.quote-pdf-preview-shade { position: absolute; z-index: 2; inset: 34% 0 0; background: linear-gradient(180deg,#09131f 0%,rgba(9,19,31,.25) 35%,rgba(9,19,31,.08) 70%,rgba(9,19,31,.9) 100%); }
+.quote-pdf-preview-brand { position: absolute; z-index: 4; top: 24px; left: 24px; font-size: .72rem; font-weight: 850; letter-spacing: .03em; }
+.quote-pdf-preview-brand b { color: #ff7650; }
+.quote-pdf-preview-copy { position: absolute; z-index: 4; top: 92px; left: 24px; right: 20px; display: grid; gap: 18px; }
+.quote-pdf-preview-copy small { color: #ff7650; font-size: .44rem; font-weight: 850; line-height: 1.5; letter-spacing: .08em; }
+.quote-pdf-preview-copy strong { font-size: clamp(1.48rem,2.1vw,2rem); font-weight: 650; line-height: .99; letter-spacing: -.05em; }
+.quote-pdf-preview-copy strong em { color: #ff7650; font-style: normal; }
+.quote-pdf-preview-copy > span { width: fit-content; padding: 7px 9px; color: white; background: hsl(var(--accent)); font-size: .41rem; font-weight: 850; letter-spacing: .05em; }
+.quote-pdf-preview footer { position: absolute; z-index: 4; left: 24px; right: 24px; bottom: 17px; display: flex; justify-content: space-between; padding-top: 9px; border-top: 1px solid rgba(255,255,255,.26); color: rgba(255,255,255,.7); font-size: .42rem; font-weight: 750; }
+.quote-pdf-gateway-copy h2 { max-width: 470px; margin: 20px 0 17px; font-size: clamp(2.45rem,3.9vw,4.4rem); font-weight: 620; line-height: .96; letter-spacing: -.052em; }
+.quote-pdf-gateway-copy > p:not(.eyebrow) { max-width: 510px; margin: 0; color: hsl(var(--muted-foreground)); font-size: .76rem; line-height: 1.72; }
+.quote-pdf-highlights { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; margin: 26px 0; }
+.quote-pdf-highlights > span { display: grid; grid-template-columns: 23px 1fr; column-gap: 7px; padding: 14px; color: hsl(var(--muted-foreground)); background: #f0ede5; border: 1px solid #d8d3c9; font-size: .56rem; line-height: 1.4; }
+.quote-pdf-highlights svg { grid-row: 1 / 3; width: 17px; color: hsl(var(--accent)); }
+.quote-pdf-highlights strong { color: hsl(var(--foreground)); font-size: .64rem; }
+.quote-pdf-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 21px; }
+.quote-pdf-actions .button { min-height: 51px; min-width: 178px; justify-content: space-between; }
+.quote-pdf-actions .button svg { width: 17px; }
+.quote-pdf-actions > a:not(.button) { display: inline-flex; align-items: center; gap: 7px; min-height: 42px; font-size: .64rem; font-weight: 800; border-bottom: 1px solid currentColor; }
+.quote-pdf-actions > a:not(.button) svg { width: 15px; }
+.quote-pdf-continue { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 25px; padding: 16px 0; text-align: left; border-top: 1px solid hsl(var(--border)); border-bottom: 1px solid hsl(var(--border)); }
+.quote-pdf-continue > span { display: grid; gap: 3px; color: hsl(var(--muted-foreground)); font-size: .6rem; }
+.quote-pdf-continue strong { color: hsl(var(--foreground)); font-size: .7rem; }
+.quote-pdf-continue > svg { width: 18px; flex-shrink: 0; color: hsl(var(--accent)); transition: transform .2s ease; }
+.quote-pdf-continue:hover > svg { transform: translateX(4px); }
+.quote-pdf-note { display: flex; align-items: flex-start; gap: 7px; margin-top: 15px; color: hsl(var(--muted-foreground)); font-size: .51rem; line-height: 1.45; }
+.quote-pdf-note svg { width: 12px; height: 12px; flex-shrink: 0; color: hsl(var(--accent)); }
 .quote-workspace-header { display: grid; grid-template-columns: 1fr 180px; gap: 30px; align-items: center; min-height: 94px; padding: 24px clamp(28px, 4vw, 54px); background: #f0ede5; border-bottom: 1px solid #d6d2c8; }
 .quote-workspace-header > div:first-child { display: grid; gap: 5px; }
 .quote-workspace-header > div:first-child span { color: hsl(var(--accent)); font-size: .56rem; font-weight: 850; letter-spacing: .14em; }
@@ -549,6 +592,7 @@
   .quote-step-list li { grid-template-columns: 35px 1fr; padding: 12px 16px 12px 0; border-right: 1px solid rgba(255,255,255,.14); }
   .quote-step-list li:last-child { border-right: 0; }
   .quote-trust { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .quote-pdf-trust { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .location-grid { grid-template-columns: 1fr 1fr; padding-top: 70px; padding-bottom: 70px; }
   .location-grid > a { justify-self: start; }
   .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
@@ -901,6 +945,10 @@
   .quote-shell { gap: 30px; padding-top: 39px; padding-bottom: 28px; }
   .quote-intro h1 { margin: 16px 0 0; font-size: clamp(2.8rem, 13vw, 3.7rem); line-height: .95; }
   .quote-intro-copy, .quote-trust { display: none; }
+  .quote-pdf-trust { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 24px; }
+  .quote-pdf-trust > div { gap: 8px; padding: 12px 0; font-size: .52rem; }
+  .quote-pdf-trust svg { width: 15px; height: 15px; }
+  .quote-pdf-trust strong { font-size: .59rem; }
   .quote-step-list { display: flex; gap: 0; margin-top: 29px; overflow: hidden; }
   .quote-step-list li { flex: 1; min-height: 58px; display: flex; gap: 8px; padding: 9px 8px 9px 0; border-right: 1px solid rgba(255,255,255,.14); }
   .quote-step-list li > span { width: 29px; height: 29px; flex-shrink: 0; }
@@ -909,6 +957,22 @@
   .quote-step-list li small { display: none; }
   .quote-workspace, .quote-workspace > form { min-height: 680px; }
   .quote-workspace { margin: 0 calc(var(--mobile-gutter) * -1); border-left: 0; border-right: 0; box-shadow: 0 20px 60px rgba(0,0,0,.22); }
+  .quote-pdf-gateway { min-height: 0; }
+  .quote-pdf-gateway-header { min-height: 74px; padding: 16px var(--mobile-gutter); }
+  .quote-pdf-gateway-header > p { gap: 5px; font-size: .54rem; }
+  .quote-pdf-gateway-header > p svg { width: 14px; }
+  .quote-pdf-gateway-body { grid-template-columns: 1fr; gap: 38px; padding: 34px var(--mobile-gutter) 44px; }
+  .quote-pdf-preview { max-width: min(72vw,265px); border-radius: 3px; box-shadow: 0 25px 55px rgba(9,19,31,.25); }
+  .quote-pdf-preview-copy { top: 84px; }
+  .quote-pdf-preview-copy strong { font-size: clamp(1.52rem,7vw,1.95rem); }
+  .quote-pdf-gateway-copy h2 { margin-top: 16px; font-size: clamp(2.7rem,12vw,3.65rem); }
+  .quote-pdf-gateway-copy > p:not(.eyebrow) { font-size: .7rem; }
+  .quote-pdf-highlights { margin: 22px 0; }
+  .quote-pdf-actions { display: grid; grid-template-columns: 1fr; gap: 4px; }
+  .quote-pdf-actions .button { width: 100%; min-height: 55px; }
+  .quote-pdf-actions > a:not(.button) { width: fit-content; margin-top: 8px; }
+  .quote-pdf-continue { min-height: 66px; margin-top: 24px; }
+  .quote-pdf-note { font-size: .5rem; }
   .quote-workspace-header { grid-template-columns: 1fr 92px; min-height: 78px; padding: 18px var(--mobile-gutter); }
   .quote-stage { padding: 30px var(--mobile-gutter) 35px; }
   .quote-stage-heading { margin-bottom: 24px; }
