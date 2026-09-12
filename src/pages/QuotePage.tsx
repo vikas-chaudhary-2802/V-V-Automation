@@ -1,4 +1,4 @@
-import { type FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { type FormEvent, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import {
   ArrowLeft,
@@ -104,20 +104,7 @@ const QuotePage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [whatsappUrl, setWhatsappUrl] = useState("");
-  const downloadStarted = useRef(false);
   const [reference] = useState(() => `VV-${new Date().toISOString().slice(2, 10).replace(/-/g, "")}-${Math.floor(1000 + Math.random() * 9000)}`);
-
-  useEffect(() => {
-    if (downloadStarted.current) return;
-    downloadStarted.current = true;
-    const link = document.createElement("a");
-    link.href = quotationPdf;
-    link.download = "VV-Automation-Standard-Quotation.pdf";
-    link.setAttribute("aria-hidden", "true");
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-  }, []);
 
   const selectedProduct = useMemo(
     () => products.find((product) => product.name === form.solution),
@@ -273,7 +260,7 @@ const QuotePage = () => {
               <div className="quote-pdf-gateway">
                 <header className="quote-pdf-gateway-header">
                   <div><span>INSTANT ACCESS</span><strong>Standard quotation PDF</strong></div>
-                  <p><CheckCircle2 />Download started</p>
+                  <p><FileText />Ready to download</p>
                 </header>
                 <div className="quote-pdf-gateway-body">
                   <article className="quote-pdf-preview" aria-label="Preview of the V&V Automation standard quotation">
@@ -303,7 +290,7 @@ const QuotePage = () => {
                     <button className="quote-pdf-continue" type="button" onClick={() => setShowForm(true)}>
                       <span><strong>Need a tailored recommendation?</strong>Continue with optional production details</span><ArrowRight />
                     </button>
-                    <small className="quote-pdf-note"><LockKeyhole />The standard PDF downloads automatically. The detailed request remains entirely optional.</small>
+                    <small className="quote-pdf-note"><LockKeyhole />The PDF downloads only when you select Download PDF. The detailed request remains entirely optional.</small>
                   </div>
                 </div>
               </div>
