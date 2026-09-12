@@ -19,7 +19,7 @@ const QuoteBand = ({
         <p>{copy}</p>
       </div>
       <div className="quote-actions" data-reveal="up">
-        <Link to="/contact" className="button button-accent">Request a quote <ArrowUpRight size={18} /></Link>
+        <Link to="/quote" className="button button-accent">Request a quote <ArrowUpRight size={18} /></Link>
         <a href={contact.phoneHref} className="quote-phone"><Phone size={18} /> {contact.phoneDisplay}</a>
       </div>
     </div>

@@ -58,7 +58,7 @@ const Header = () => {
             <Phone size={16} />
             <span>+91 93135 21824</span>
           </a>
-          <Link className="button button-accent header-quote" to="/contact">
+          <Link className="button button-accent header-quote" to="/quote">
             Request a quote <ArrowUpRight size={17} />
           </Link>
           <button

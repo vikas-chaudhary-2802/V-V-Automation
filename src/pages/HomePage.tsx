@@ -27,7 +27,7 @@ const HomePage = () => (
         </p>
         <div className="hero-actions">
           <Link to="/products" className="button button-accent">Explore our machines <ArrowRight size={18} /></Link>
-          <Link to="/contact" className="button button-ghost">Share your requirement <ArrowDownRight size={18} /></Link>
+          <Link to="/quote" className="button button-ghost">Share your requirement <ArrowDownRight size={18} /></Link>
         </div>
         <div className="hero-proof" aria-label="Core strengths">
           <div><Factory /><span><strong>In-house</strong>Design &amp; build</span></div>

@@ -5,6 +5,7 @@ import ProductsPage from "@/pages/ProductsPage";
 import PartsPage from "@/pages/PartsPage";
 import AboutPage from "@/pages/AboutPage";
 import ContactPage from "@/pages/ContactPage";
+import QuotePage from "@/pages/QuotePage";
 import NotFound from "@/pages/NotFound";
 
 const App = () => (
@@ -16,6 +17,7 @@ const App = () => (
       <Route path="/parts" element={<PartsPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/quote" element={<QuotePage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </BrowserRouter>

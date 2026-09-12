@@ -40,7 +40,7 @@ const PartsPage = () => (
                 <h2>{part.name}</h2>
                 <p>{part.description}</p>
                 <ul>{part.applications.map((item) => <li key={item}><Check />{item}</li>)}</ul>
-                <Link to="/contact" className="part-card-link">Enquire about this part <ArrowRight /></Link>
+                <Link to="/quote?machine=CNC%20Parts%20%26%20Components" className="part-card-link">Enquire about this part <ArrowRight /></Link>
               </div>
             </article>
           ))}

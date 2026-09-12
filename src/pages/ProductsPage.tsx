@@ -48,7 +48,7 @@ const ProductsPage = () => (
                   <div className="model-list">{product.models.map((model) => <span key={model}>{model}</span>)}</div>
                 </div>
               </div>
-              <Link to="/contact" className="button button-dark">Discuss this machine <MoveRight size={18} /></Link>
+              <Link to={`/quote?machine=${encodeURIComponent(product.name)}`} className="button button-dark">Discuss this machine <MoveRight size={18} /></Link>
             </div>
           </article>
         ))}
@@ -63,7 +63,7 @@ const ProductsPage = () => (
             <div key={number} data-reveal="up"><span>{number}</span><h3>{title}</h3><p>{copy}</p></div>
           ))}
         </div>
-        <Link to="/contact" className="text-link">Share your application <ArrowRight size={18} /></Link>
+        <Link to="/quote" className="text-link">Share your application <ArrowRight size={18} /></Link>
       </div>
     </section>
 
