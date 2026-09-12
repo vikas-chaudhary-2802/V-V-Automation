@@ -4,7 +4,7 @@ import Layout from "@/components/layout/Layout";
 import QuoteBand from "@/components/QuoteBand";
 import SectionHeading from "@/components/SectionHeading";
 import { advantages, parts, products, serviceSteps, stats } from "@/data/catalog";
-import heroMachine from "@/assets/vv-vmc-machine-optimized.jpg";
+import heroMachine from "@/assets/cnc-hero-premium-v2.jpg";
 import cncShop from "@/assets/cnc-shop.jpg";
 
 const HomePage = () => (
