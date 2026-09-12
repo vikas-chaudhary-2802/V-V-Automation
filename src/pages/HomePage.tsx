@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, BadgeCheck, Factory, MapPin } from "lucide-react";
 import Layout from "@/components/layout/Layout";
+import AnimatedStat from "@/components/AnimatedStat";
 import QuoteBand from "@/components/QuoteBand";
 import SectionHeading from "@/components/SectionHeading";
 import { advantages, parts, products, serviceSteps, stats } from "@/data/catalog";
@@ -10,7 +11,7 @@ import cncShop from "@/assets/cnc-shop.jpg";
 const HomePage = () => (
   <Layout>
     <section className="home-hero">
-      <div className="hero-image" aria-hidden="true"><img src={heroMachine} alt="" fetchPriority="high" /></div>
+      <div className="hero-image" aria-hidden="true"><img src={heroMachine} alt="" fetchPriority="high" data-parallax="0.045" /></div>
       <div className="hero-shade" />
       <div className="hero-grid" />
       <div className="hero-mobile-badge" aria-hidden="true">
@@ -87,12 +88,12 @@ const HomePage = () => (
 
     <section className="stats-band" aria-label="Company highlights">
       <div className="container-section stats-grid" data-reveal="up">
-        {stats.map((stat) => <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}
+        {stats.map((stat) => <div key={stat.label}><AnimatedStat value={stat.value} /><span>{stat.label}</span></div>)}
       </div>
     </section>
 
     <section className="factory-story">
-      <div className="factory-image" data-reveal="image"><img src={cncShop} alt="CNC machines on a modern production floor" loading="lazy" decoding="async" /></div>
+      <div className="factory-image" data-reveal="image"><img src={cncShop} alt="CNC machines on a modern production floor" loading="lazy" decoding="async" data-parallax="0.05" /></div>
       <div className="factory-copy" data-reveal="up">
         <p className="eyebrow eyebrow-light"><span />WHY V&amp;V</p>
         <h2>We manufacture.<br />We do not just resell.</h2>

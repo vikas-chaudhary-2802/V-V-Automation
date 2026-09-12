@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
+import AnimatedStat from "@/components/AnimatedStat";
 import PageHero from "@/components/PageHero";
 import QuoteBand from "@/components/QuoteBand";
 import SectionHeading from "@/components/SectionHeading";
@@ -33,13 +34,13 @@ const AboutPage = () => (
     </section>
 
     <section className="about-image-break" data-reveal="image">
-      <img src={cncShop} alt="Modern CNC manufacturing facility" loading="lazy" decoding="async" />
+      <img src={cncShop} alt="Modern CNC manufacturing facility" loading="lazy" decoding="async" data-parallax="0.05" />
       <div className="about-image-note"><span>Delhi, India</span><strong>Engineering with ownership.</strong></div>
     </section>
 
     <section className="about-stats">
       <div className="container-section stats-grid" data-reveal="up">
-        {stats.map((stat) => <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}
+        {stats.map((stat) => <div key={stat.label}><AnimatedStat value={stat.value} /><span>{stat.label}</span></div>)}
       </div>
     </section>
 
