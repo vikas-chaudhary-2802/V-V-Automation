@@ -37,6 +37,11 @@ const HomePage = () => (
         <div className="hero-scroll-cue" aria-hidden="true"><ArrowDown />Scroll to explore</div>
       </div>
 
+      <div className="hero-machine-note" aria-label="Featured machine">
+        <span>Featured platform</span>
+        <strong>VMC Series</strong>
+        <small><i /> Engineered &amp; built in India</small>
+      </div>
       <div className="hero-index" aria-hidden="true"><span>V&amp;V / 01</span><span>ENGINEERED IN INDIA</span></div>
     </section>
 
