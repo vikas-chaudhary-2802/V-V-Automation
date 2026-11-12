@@ -49,7 +49,7 @@ export const products: Product[] = [
     description: "Versatile systems engineered for repeatable accuracy and dependable daily output—from prototypes to production batches.",
     image: machine542,
     applications: ["Metal components", "Prototype development", "Batch production", "Precision machining"],
-    models: ["VV M-542", "VV M-540", "VV M-538"],
+    models: ["VV M-542", "VV M-643", "VV M-853"],
     tag: "Most versatile",
     profile: { detail: 3, power: 3, speed: 3, volume: 3 },
   },
@@ -61,7 +61,7 @@ export const products: Product[] = [
     description: "Compact machines delivering clean finishes and fine-detail control for nameplates, dies, patterns and detailed surface work.",
     image: machine543,
     applications: ["Signage", "Mould & die", "Jewellery", "Part marking"],
-    models: ["VV M-543", "VV E-320", "VV E-215"],
+    models: ["VV M-543", "VV M-432", "VV M-322"],
     tag: "Fine detail",
     profile: { detail: 5, power: 1, speed: 3, volume: 2 },
   },
@@ -73,7 +73,7 @@ export const products: Product[] = [
     description: "A robust structure and powerful spindle, built for demanding metal removal, complex surfaces and tool-room work.",
     image: machine433,
     applications: ["3D surfaces", "Metal cutting", "Tool & die", "Auto components"],
-    models: ["VV M-433", "VV M-430", "VV M-425"],
+    models: ["VV M-433", "VV M-543", "VV M-644"],
     tag: "Heavy duty",
     profile: { detail: 3, power: 4, speed: 3, volume: 4 },
   },
@@ -85,7 +85,7 @@ export const products: Product[] = [
     description: "Production-ready VMC systems that balance speed, rigidity and tight tolerances in high-volume environments.",
     image: vmcMachine,
     applications: ["Volume production", "Precision parts", "Aerospace", "Industrial equipment"],
-    models: ["VV VMC-850", "VV VMC-640", "VV VMC-540"],
+    models: ["VV M-855", "VV M-645", "VV M-544"],
     tag: "Production ready",
     profile: { detail: 4, power: 5, speed: 5, volume: 5 },
   },
@@ -127,3 +127,20 @@ export const milestones = [
   { year: "2022", text: "Pan-India supply and support network expands." },
   { year: "2024", text: "Next-generation precision series launches." },
 ];
+
+/**
+ * Every V&V machine is built to the customer's working size, and the model name encodes it:
+ * VV M-542 = X 500 mm × Y 400 mm × Z 200 mm of travel (each digit = hundreds of mm).
+ */
+export interface MachineSize { x: number; y: number; z: number }
+
+export const modelName = ({ x, y, z }: MachineSize) => `VV M-${x / 100}${y / 100}${z / 100}`;
+
+export const decodeModel = (model: string): MachineSize | null => {
+  const m = model.match(/M-(\d)(\d)(\d)$/);
+  if (!m) return null;
+  const [x, y, z] = m.slice(1).map((d) => Number(d) * 100);
+  return x && y && z ? { x, y, z } : null;
+};
+
+export const sizeLabel = (size: MachineSize) => `X ${size.x} × Y ${size.y} × Z ${size.z} mm`;

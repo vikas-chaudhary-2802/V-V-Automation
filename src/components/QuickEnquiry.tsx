@@ -79,7 +79,8 @@ const QuickEnquiry = () => {
         ) : (
           <form onSubmit={submit} noValidate>
             <p className="eyebrow"><span />Quick enquiry · 30 seconds</p>
-            <h2 id="enquiry-title">{model ? `Get the price for ${model}` : machine ? `Get the price for ${machine}` : "Tell us what you need."}</h2>
+            <h2 id="enquiry-title">{model ? `Get the price for ${model.split(" (")[0]}` : machine ? `Get the price for ${machine}` : "Tell us what you need."}</h2>
+            {model.includes("(") && <p className="enquiry-size">Working size: {model.split(" (")[1].replace(")", "")}</p>}
             <p className="enquiry-sub">No long forms. We'll reply on WhatsApp with price, specs and delivery time.</p>
 
             <fieldset className="enquiry-needs">

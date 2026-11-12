@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "./Header";
@@ -16,6 +17,15 @@ const staticMeta: Record<string, [string, string]> = {
   "/quote": ["Request a Quote | V&V Automation", "Share your CNC or VMC requirement and get a written quotation from V&V Automation."],
 };
 
+const Canonical = ({ path }: { path: string }) => {
+  useEffect(() => {
+    let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!link) { link = document.createElement("link"); link.rel = "canonical"; document.head.appendChild(link); }
+    link.href = `https://www.vv-automation.com${path === "/" ? "" : path}`;
+  }, [path]);
+  return null;
+};
+
 const StaticMeta = ({ path }: { path: string }) => {
   const meta = staticMeta[path];
   usePageMeta(meta?.[0] ?? document.title, meta?.[1]);
@@ -32,6 +42,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className={`site-shell route-${pathname.split("/")[1] || "home"}`}>
       <a className="skip-link" href="#main">Skip to content</a>
+      <Canonical path={pathname} />
       {staticMeta[pathname] && <StaticMeta path={pathname} />}
       <ScrollExperience />
       <CursorSpotlight />

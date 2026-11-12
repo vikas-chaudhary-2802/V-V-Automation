@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { contact, parts, products } from "@/data/catalog";
+import { contact, decodeModel, parts, products, sizeLabel } from "@/data/catalog";
 import partsImage from "@/assets/control-panel.webp";
 import supportImage from "@/assets/cnc-shop.webp";
 import quotationMachine from "@/assets/cnc-hero-branded-v3.webp";
@@ -320,10 +320,10 @@ const QuotePage = () => {
                       ))}
                     </div>
                     {selectedProduct && (
-                      <label className="quote-model-select"><span>Preferred model <small>Optional</small></span>
+                      <label className="quote-model-select"><span>Preferred size <small>Optional · model number = X Y Z travel in 100s of mm</small></span>
                         <Select value={form.model} onValueChange={(value) => update("model", value)}>
                           <SelectTrigger><SelectValue placeholder="Let V&V recommend the model" /></SelectTrigger>
-                          <SelectContent>{selectedProduct.models.map((model) => <SelectItem key={model} value={model}>{model}</SelectItem>)}</SelectContent>
+                          <SelectContent>{selectedProduct.models.map((model) => <SelectItem key={model} value={model}>{model}{decodeModel(model) ? ` · ${sizeLabel(decodeModel(model)!)}` : ""}</SelectItem>)}<SelectItem value="Custom size (to be discussed)">Custom size: I'll share my X / Y / Z</SelectItem></SelectContent>
                         </Select>
                       </label>
                     )}

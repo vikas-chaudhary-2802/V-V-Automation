@@ -4,7 +4,8 @@ import { ArrowLeft, ArrowRight, BadgeCheck, Check, ChevronRight, Eye, FileText, 
 import Layout from "@/components/layout/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import QuoteBand from "@/components/QuoteBand";
-import { contact, products, serviceSteps } from "@/data/catalog";
+import { contact, decodeModel, products, serviceSteps, sizeLabel } from "@/data/catalog";
+import SizeBuilder from "@/components/SizeBuilder";
 import { openEnquiry, waLink } from "@/lib/enquiry";
 import { usePageMeta } from "@/hooks/use-page-meta";
 
@@ -68,7 +69,8 @@ const MachinePage = () => {
               <p className="eyebrow"><span />{product.englishName}</p>
               <h1>{product.name}</h1>
               <p className="mp-lead">{product.description}</p>
-              <div className="mp-models" aria-label="Available models">
+              <p className="mp-models-label">Popular sizes</p>
+              <div className="mp-models" aria-label="Popular sizes">
                 {product.models.map((m) => <span key={m}>{m}</span>)}
               </div>
               <div className="mp-cta">
@@ -77,7 +79,8 @@ const MachinePage = () => {
               </div>
               <a className="mp-call" href={contact.phoneHref}><Phone size={16} /> Or call the factory: <strong>{contact.phoneDisplay}</strong></a>
               <ul className="mp-assure">
-                <li><Check />Built in-house in Delhi</li>
+                <li><Check />Built to your working size</li>
+                <li><Check />Made in-house in Delhi</li>
                 <li><Check />Installation &amp; training included</li>
                 <li><Check />Pan-India delivery &amp; service</li>
               </ul>
@@ -110,20 +113,31 @@ const MachinePage = () => {
 
       <section className="mp-models-section section-space-sm">
         <div className="container-section">
-          <SectionHeading eyebrow="CHOOSE YOUR MODEL" title="Three sizes. One build standard." copy="Each model is configured to your job size, spindle and controller. Ask for the spec sheet and we'll send it on WhatsApp." />
+          <SectionHeading eyebrow="POPULAR SIZES" title="Start from a popular size, or build yours." copy="Every machine is built to order. The model number is the working size: the three digits are X, Y and Z travel in hundreds of millimetres." />
           <div className="mp-model-grid">
             {product.models.map((m, i) => (
               <article key={m} className="mp-model" data-reveal="up">
-                <span className="mp-model-size">{["Large", "Mid", "Compact"][i] ?? "Model"}</span>
+                <span className="mp-model-size">{i === 0 ? "Most requested" : "Popular size"}</span>
                 <h3>{m}</h3>
-                <p>{product.englishName}</p>
+                {decodeModel(m) && (
+                  <dl className="mp-travel">
+                    {(["x", "y", "z"] as const).map((a) => <div key={a}><dt>{a.toUpperCase()}</dt><dd>{decodeModel(m)![a]}<small>mm</small></dd></div>)}
+                  </dl>
+                )}
                 <div className="mp-model-actions">
-                  <button type="button" className="button button-dark" onClick={() => openEnquiry({ machine: product.name, model: m })}>Get price</button>
+                  <button type="button" className="button button-dark" onClick={() => openEnquiry({ machine: product.name, model: decodeModel(m) ? `${m} (${sizeLabel(decodeModel(m)!)})` : m })}>Get price</button>
                   <a href={waLink(`Hello V&V Automation, please share the spec sheet for ${m} (${product.name}).`)} target="_blank" rel="noreferrer"><FileText size={16} /> Spec sheet</a>
                 </div>
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="mp-section section-space-sm" id="build-your-size">
+        <div className="container-section mp-split mp-sb-split">
+          <SectionHeading eyebrow="BUILT TO YOUR SIZE" title="Need a different size? Build it here." copy="Set the travel you need on each axis. We'll build that exact working area, so you don't pay for a bigger machine than your parts need." />
+          <SizeBuilder machine={product.name} start={product.models[0]} />
         </div>
       </section>
 

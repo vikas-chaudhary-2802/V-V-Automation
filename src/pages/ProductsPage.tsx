@@ -6,6 +6,7 @@ import QuoteBand from "@/components/QuoteBand";
 import SectionHeading from "@/components/SectionHeading";
 import MachineNav from "@/components/effects/MachineNav";
 import MachineCompare from "@/components/effects/MachineCompare";
+import SizeBuilder from "@/components/SizeBuilder";
 import { products } from "@/data/catalog";
 import { openEnquiry } from "@/lib/enquiry";
 import { usePageMeta } from "@/hooks/use-page-meta";
@@ -53,7 +54,7 @@ const ProductsPage = () => {
                   <ul>{product.applications.map((item) => <li key={item}><Check />{item}</li>)}</ul>
                 </div>
                 <div>
-                  <h3>Available models</h3>
+                  <h3>Popular sizes <small>· or built to your size</small></h3>
                   <div className="model-list">{product.models.map((model) => <span key={model}>{model}</span>)}</div>
                 </div>
               </div>
@@ -67,6 +68,13 @@ const ProductsPage = () => {
       </div>
     </section>
     </div>
+
+    <section id="build-your-size" className="sb-section section-space">
+      <div className="container-section mp-split mp-sb-split">
+        <SectionHeading eyebrow="BUILT TO YOUR SIZE" title="Our model number is your working size." copy="We don't sell fixed catalogue sizes. Every CNC, engraving, milling and VMC machine is built to the travel your parts need. VV M-542 means 500 × 400 × 200 mm. Build yours and get a price for that exact machine." />
+        <SizeBuilder />
+      </div>
+    </section>
 
     <MachineCompare />
 

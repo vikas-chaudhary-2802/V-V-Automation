@@ -96,7 +96,7 @@ const MachineFinder = () => {
                 <div>
                   <h3>{result.best.name}</h3>
                   <p>{result.best.description}</p>
-                  <div className="model-list">{result.best.models.map((m) => <span key={m}>{m}</span>)}</div>
+                  <div className="model-list" title="Popular sizes: every machine is built to your working size">{result.best.models.map((m) => <span key={m}>{m}</span>)}</div>
                 </div>
               </div>
               <div className="finder-actions">
