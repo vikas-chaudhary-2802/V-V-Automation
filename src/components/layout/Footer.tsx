@@ -20,7 +20,7 @@ const Footer = () => (
           <p>Indian CNC machine manufacturing, critical components and direct technical support.</p>
         </div>
         <div><h3>Navigate</h3><Link to="/">Home</Link><Link to="/products">Machines</Link><Link to="/parts">CNC Parts</Link><Link to="/about">About</Link><Link to="/quote">Request a quote</Link><Link to="/contact">Contact</Link></div>
-        <div><h3>Machine range</h3>{products.map((product) => <Link key={product.id} to={`/products#${product.id}`}>{product.name}</Link>)}</div>
+        <div><h3>Machine range</h3>{products.map((product) => <Link key={product.id} to={`/machines/${product.id}`}>{product.name}</Link>)}</div>
         <div className="footer-contact"><h3>Contact</h3><a href={contact.phoneHref}><Phone />{contact.phoneDisplay}</a><a href={`mailto:${contact.email}`}><Mail />{contact.email}</a><p><MapPin />{contact.addressLines.join(", ")}</p></div>
       </div>
 

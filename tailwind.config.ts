@@ -59,8 +59,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        sans: ['"Manrope Variable"', 'Manrope', 'system-ui', 'sans-serif'],
+        display: ['"Manrope Variable"', 'Manrope', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",

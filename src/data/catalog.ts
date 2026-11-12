@@ -1,11 +1,11 @@
 import type { LucideIcon } from "lucide-react";
 import { BadgeCheck, Boxes, Factory, Gauge, Headphones, Settings2, ShieldCheck, Wrench } from "lucide-react";
-import machine542 from "@/assets/vv-m-542.png";
-import machine543 from "@/assets/vv-m-543.png";
-import machine433 from "@/assets/vv-m-433.png";
-import vmcMachine from "@/assets/vv-vmc-machine-optimized.jpg";
+import machine542 from "@/assets/vv-m-542.webp";
+import machine543 from "@/assets/vv-m-543.webp";
+import machine433 from "@/assets/vv-m-433.webp";
+import vmcMachine from "@/assets/vv-vmc-machine-optimized.webp";
 import servoMotor from "@/assets/servo-motor.jpg";
-import controlPanel from "@/assets/control-panel.jpg";
+import controlPanel from "@/assets/control-panel.webp";
 import mpgHandwheel from "@/assets/mpg-handwheel.jpg";
 import spindleMotor from "@/assets/spindle-motor.webp";
 import servoDrives from "@/assets/servo-drives.jpg";
@@ -37,6 +37,7 @@ export interface Product {
   applications: string[];
   models: string[];
   tag: string;
+  profile: { detail: number; power: number; speed: number; volume: number };
 }
 
 export const products: Product[] = [
@@ -50,6 +51,7 @@ export const products: Product[] = [
     applications: ["Metal components", "Prototype development", "Batch production", "Precision machining"],
     models: ["VV M-542", "VV M-540", "VV M-538"],
     tag: "Most versatile",
+    profile: { detail: 3, power: 3, speed: 3, volume: 3 },
   },
   {
     id: "cnc-engraving",
@@ -61,6 +63,7 @@ export const products: Product[] = [
     applications: ["Signage", "Mould & die", "Jewellery", "Part marking"],
     models: ["VV M-543", "VV E-320", "VV E-215"],
     tag: "Fine detail",
+    profile: { detail: 5, power: 1, speed: 3, volume: 2 },
   },
   {
     id: "cnc-milling",
@@ -72,6 +75,7 @@ export const products: Product[] = [
     applications: ["3D surfaces", "Metal cutting", "Tool & die", "Auto components"],
     models: ["VV M-433", "VV M-430", "VV M-425"],
     tag: "Heavy duty",
+    profile: { detail: 3, power: 4, speed: 3, volume: 4 },
   },
   {
     id: "vmc-machines",
@@ -83,6 +87,7 @@ export const products: Product[] = [
     applications: ["Volume production", "Precision parts", "Aerospace", "Industrial equipment"],
     models: ["VV VMC-850", "VV VMC-640", "VV VMC-540"],
     tag: "Production ready",
+    profile: { detail: 4, power: 5, speed: 5, volume: 5 },
   },
 ];
 

@@ -3,17 +3,30 @@ import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, BadgeCheck, Factor
 import Layout from "@/components/layout/Layout";
 import AnimatedStat from "@/components/AnimatedStat";
 import QuoteBand from "@/components/QuoteBand";
+import ToolpathCanvas from "@/components/effects/ToolpathCanvas";
+import Marquee from "@/components/effects/Marquee";
+import Faq from "@/components/home/Faq";
+import MachineFinder from "@/components/home/MachineFinder";
 import SectionHeading from "@/components/SectionHeading";
 import { advantages, parts, products, serviceSteps, stats } from "@/data/catalog";
-import heroMachine from "@/assets/cnc-hero-branded-v3.jpg";
-import cncShop from "@/assets/cnc-shop.jpg";
+import { openEnquiry } from "@/lib/enquiry";
+import { usePageMeta } from "@/hooks/use-page-meta";
+import { Eye, FileUp } from "lucide-react";
+import heroMachine from "@/assets/cnc-hero-branded-v3.webp";
+import cncShop from "@/assets/cnc-shop.webp";
 
-const HomePage = () => (
+const capabilities = ["CNC Engraving", "CNC Milling", "Vertical Machining Centres", "Servo Systems", "Spindle Motors", "Mould & Die", "Aerospace Parts", "Auto Components", "Installation & Training", "Pan-India Service"];
+const headline = ["CNC", "machines", "built", "around"];
+
+const HomePage = () => {
+  usePageMeta("V&V Automation | CNC & VMC Machine Manufacturer in Delhi, India", "V&V Automation manufactures CNC, engraving, milling and VMC machines in Delhi. Live demos, trial cuts, installation and pan-India service. Get a price on WhatsApp.");
+  return (
   <Layout>
     <section className="home-hero">
       <div className="hero-image" aria-hidden="true"><img src={heroMachine} alt="" fetchPriority="high" data-parallax="0.045" /></div>
       <div className="hero-shade" />
       <div className="hero-grid" />
+      <ToolpathCanvas />
       <div className="hero-mobile-badge" aria-hidden="true">
         <span>VMC Series</span>
         <strong>Built in India</strong>
@@ -21,14 +34,17 @@ const HomePage = () => (
 
       <div className="container-section hero-content">
         <div className="hero-kicker"><span /> CNC MACHINE MANUFACTURER · DELHI</div>
-        <h1>CNC machines built around<em>your ambition.</em></h1>
+        <h1 aria-label="CNC machines built around your ambition.">
+          {headline.map((word, i) => <span className="hero-word" style={{ "--i": i } as React.CSSProperties} key={word} aria-hidden="true">{word}&nbsp;</span>)}
+          <em aria-hidden="true">your ambition.</em>
+        </h1>
         <p>
           From engineering to installation, V&amp;V Automation builds dependable CNC,
           engraving, milling and VMC solutions for ambitious Indian manufacturers.
         </p>
         <div className="hero-actions">
           <Link to="/products" className="button button-accent">Explore our machines <ArrowRight size={18} /></Link>
-          <Link to="/quote" className="button button-ghost">Share your requirement <ArrowDownRight size={18} /></Link>
+          <button type="button" onClick={() => openEnquiry()} className="button button-ghost">Get a quick price <ArrowDownRight size={18} /></button>
         </div>
         <div className="hero-proof" aria-label="Core strengths">
           <div><Factory /><span><strong>In-house</strong>Design &amp; build</span></div>
@@ -45,6 +61,8 @@ const HomePage = () => (
       </div>
       <div className="hero-index" aria-hidden="true"><span>V&amp;V / 01</span><span>ENGINEERED IN INDIA</span></div>
     </section>
+
+    <Marquee items={capabilities} />
 
     <section className="intro-strip">
       <div className="container-section intro-grid" data-reveal="up">
@@ -68,7 +86,7 @@ const HomePage = () => (
 
         <div className="machine-grid">
           {products.map((product) => (
-            <Link to={`/products#${product.id}`} className="machine-card" key={product.id} data-reveal="up">
+            <Link to={`/machines/${product.id}`} className="machine-card" key={product.id} data-reveal="up">
               <div className="machine-card-media">
                 <span className="machine-card-index">{product.number}</span>
                 <span className="machine-card-tag">{product.tag}</span>
@@ -82,6 +100,26 @@ const HomePage = () => (
               </div>
             </Link>
           ))}
+        </div>
+      </div>
+    </section>
+
+    <MachineFinder />
+
+    <section className="demo-band">
+      <div className="container-section demo-band-grid">
+        <div className="demo-band-copy" data-reveal="up">
+          <p className="eyebrow eyebrow-light"><span />SEE BEFORE YOU BUY</p>
+          <h2>Don't buy a machine from a brochure.</h2>
+          <p>A CNC or VMC is a long-term investment. See it run first, on our floor or on your own part.</p>
+        </div>
+        <div className="demo-options">
+          <button type="button" className="demo-option" data-reveal="up" onClick={() => openEnquiry({ need: "Live demo" })}>
+            <Eye /><strong>Book a live demo</strong><span>Visit our Delhi facility and watch the machine cut. Bring your team and your questions.</span><em>Book a slot <ArrowRight size={16} /></em>
+          </button>
+          <button type="button" className="demo-option" data-reveal="up" onClick={() => openEnquiry({ need: "Trial cut on my part" })}>
+            <FileUp /><strong>Request a trial cut</strong><span>Send your drawing or sample. Check finish, accuracy and cycle time on your own job before you decide.</span><em>Send your drawing <ArrowRight size={16} /></em>
+          </button>
         </div>
       </div>
     </section>
@@ -156,8 +194,11 @@ const HomePage = () => (
       </div>
     </section>
 
+    <Faq />
+
     <QuoteBand />
   </Layout>
-);
+  );
+};
 
 export default HomePage;

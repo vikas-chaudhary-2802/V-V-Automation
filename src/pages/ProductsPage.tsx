@@ -4,10 +4,16 @@ import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/PageHero";
 import QuoteBand from "@/components/QuoteBand";
 import SectionHeading from "@/components/SectionHeading";
+import MachineNav from "@/components/effects/MachineNav";
+import MachineCompare from "@/components/effects/MachineCompare";
 import { products } from "@/data/catalog";
-import heroImage from "@/assets/vmc-machine.jpg";
+import { openEnquiry } from "@/lib/enquiry";
+import { usePageMeta } from "@/hooks/use-page-meta";
+import heroImage from "@/assets/vmc-machine.webp";
 
-const ProductsPage = () => (
+const ProductsPage = () => {
+  usePageMeta("CNC, Engraving, Milling & VMC Machines | V&V Automation", "Compare V&V Automation CNC, engraving, milling and VMC machines. Built in Delhi, installed and supported across India. Get a price on WhatsApp.");
+  return (
   <Layout>
     <PageHero
       eyebrow="MACHINES / PRODUCT RANGE"
@@ -24,6 +30,9 @@ const ProductsPage = () => (
         <p>Our team helps match your material, component size, finish, cycle time and production volume to the right platform.</p>
       </div>
     </section>
+
+    <div className="product-zone">
+    <MachineNav />
 
     <section className="product-list">
       <div className="container-section">
@@ -48,12 +57,18 @@ const ProductsPage = () => (
                   <div className="model-list">{product.models.map((model) => <span key={model}>{model}</span>)}</div>
                 </div>
               </div>
-              <Link to={`/quote?machine=${encodeURIComponent(product.name)}`} className="button button-dark">Discuss this machine <MoveRight size={18} /></Link>
+              <div className="product-row-actions">
+                <Link to={`/machines/${product.id}`} className="button button-dark">View machine details <MoveRight size={18} /></Link>
+                <button type="button" className="button button-outline" onClick={() => openEnquiry({ machine: product.name })}>Get price</button>
+              </div>
             </div>
           </article>
         ))}
       </div>
     </section>
+    </div>
+
+    <MachineCompare />
 
     <section className="selection-section section-space">
       <div className="container-section">
@@ -69,6 +84,7 @@ const ProductsPage = () => (
 
     <QuoteBand title="Need a configuration built around your application?" />
   </Layout>
-);
+  );
+};
 
 export default ProductsPage;

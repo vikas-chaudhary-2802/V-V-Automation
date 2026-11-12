@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { contact, products } from "@/data/catalog";
-import heroImage from "@/assets/cnc-shop.jpg";
+import heroImage from "@/assets/cnc-shop.webp";
 
 interface FormState {
   name: string;

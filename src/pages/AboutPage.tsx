@@ -6,8 +6,8 @@ import PageHero from "@/components/PageHero";
 import QuoteBand from "@/components/QuoteBand";
 import SectionHeading from "@/components/SectionHeading";
 import { advantages, milestones, stats } from "@/data/catalog";
-import cncShop from "@/assets/cnc-shop.jpg";
-import machineImage from "@/assets/vv-vmc-machine-optimized.jpg";
+import cncShop from "@/assets/cnc-shop.webp";
+import machineImage from "@/assets/vv-vmc-machine-optimized.webp";
 
 const AboutPage = () => (
   <Layout>

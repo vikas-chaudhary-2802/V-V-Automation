@@ -18,10 +18,10 @@ npm run test
 
 ## Project structure
 
-- `src/pages/` contains the five public routes.
+- `src/pages/` contains the public routes, including one detail page per machine family (`/machines/:id`).
 - `src/components/` contains shared layout and section primitives.
 - `src/data/catalog.ts` is the single source of truth for machines, parts, contact details and company highlights.
 - `src/assets/` contains product and facility photography.
-- `public/og.png` is the social sharing image.
+- `public/og.jpg` is the social sharing image; `public/favicon.*`, `apple-touch-icon.png` and `icon-*.png` are the V&V brand icons.
 
 The contact form prepares an enquiry in WhatsApp; it does not store or transmit form data through a separate form service.

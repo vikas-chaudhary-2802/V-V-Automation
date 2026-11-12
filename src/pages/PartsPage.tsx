@@ -5,7 +5,7 @@ import PageHero from "@/components/PageHero";
 import QuoteBand from "@/components/QuoteBand";
 import SectionHeading from "@/components/SectionHeading";
 import { contact, parts } from "@/data/catalog";
-import heroImage from "@/assets/control-panel.jpg";
+import heroImage from "@/assets/control-panel.webp";
 
 const PartsPage = () => (
   <Layout>

@@ -21,9 +21,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { contact, parts, products } from "@/data/catalog";
-import partsImage from "@/assets/control-panel.jpg";
-import supportImage from "@/assets/cnc-shop.jpg";
-import quotationMachine from "@/assets/cnc-hero-branded-v3.jpg";
+import partsImage from "@/assets/control-panel.webp";
+import supportImage from "@/assets/cnc-shop.webp";
+import quotationMachine from "@/assets/cnc-hero-branded-v3.webp";
 
 type QuoteStep = 1 | 2 | 3;
 
